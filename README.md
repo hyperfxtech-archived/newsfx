@@ -2,7 +2,17 @@
 > Dự án đang trong quá trình thực hiện
 
 ## Bắt đầu nhanh
+### Cài đặt
+```
+pip install newsfx
+```
 
+### Thực hiện
+```python
+import newsfx
+data = newsfx('https://vnexpress.net/thoi-su/nguoi-dan-un-un-tro-lai-sai-gon-ha-noi-sau-ky-nghi-le-3917122.html')
+print(data) # return dictionary
+```
 
 ## Trang tin hỗ trợ
 - [ ] VnExpress
