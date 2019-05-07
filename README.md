@@ -3,15 +3,17 @@
 
 ## Bắt đầu nhanh
 ### Cài đặt
+> Chỉ support Python 3.6+
 ```
 pip install newsfx
 ```
 
 ### Thực hiện
 ```python
-import newsfx
-data = newsfx('https://vnexpress.net/thoi-su/nguoi-dan-un-un-tro-lai-sai-gon-ha-noi-sau-ky-nghi-le-3917122.html')
-print(data) # return dictionary
+from newsfx import NewsFX
+run = NewsFX('https://vnexpress.net/thoi-su/nguoi-dan-un-un-tro-lai-sai-gon-ha-noi-sau-ky-nghi-le-3917122.html')
+run.parser()
+print(run.get_title) # Người dân ùn ùn trở lại Sài Gòn, Hà Nội sau kỳ nghỉ lễ
 ```
 
 ## Trang tin hỗ trợ
@@ -20,7 +22,7 @@ print(data) # return dictionary
 |--------------------|:-----:|----------------|---------|---------|--------|-----------|
 | VnExpress          | ✔️   |                |         |         |        |           |
 | Tuổi Trẻ Online    | ✔️   |                |         |         |        |           |
-| Thanh Niên         |       |                |         |         |        |           |
+| Thanh Niên         | ✔️   |                |         |         |        |           |
 | Tiền Phong         |       |                |         |         |        |           |
 | Lao Động           |       |                |         |         |        |           |
 | Báo mới            |       |                |         |         |        |           |
