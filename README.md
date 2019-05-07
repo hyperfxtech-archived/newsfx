@@ -15,7 +15,26 @@ print(data) # return dictionary
 ```
 
 ## Trang tin hỗ trợ
-- [ ] VnExpress
+
+| news site          | title | published_date | summary | content | author | top_image |
+|--------------------|:-----:|----------------|---------|---------|--------|-----------|
+| VnExpress          | ✔️   |                |         |         |        |           |
+| Tuổi Trẻ Online    | ✔️   |                |         |         |        |           |
+| Thanh Niên         |       |                |         |         |        |           |
+| Tiền Phong         |       |                |         |         |        |           |
+| Lao Động           |       |                |         |         |        |           |
+| Báo mới            |       |                |         |         |        |           |
+| Người Lao Động     |       |                |         |         |        |           |
+| Nhân Dân           |       |                |         |         |        |           |
+| Đời Sống Pháp Luật |       |                |         |         |        |           |
+| Vietnamnet         |       |                |         |         |        |           |
+| Zing News          |       |                |         |         |        |           |
+| Dân Trí            |       |                |         |         |        |           |
+| Nhịp Sống Số       |       |                |         |         |        |           |
+| Tri Thức Trẻ       |       |                |         |         |        |           |
+| Vietnam Plus       |       |                |         |         |        |           |
+
+
 ## TODO
 - [ ] Tự động nhận dạng url đầu vào
 - [ ] Định dạng kết quả trả về trong dictionary
