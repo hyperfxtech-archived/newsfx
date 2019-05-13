@@ -109,5 +109,5 @@ venv.bak/
 .vscode
 
 #my test 
-test.py
-test.txt
+.test.py
+.test.txt
