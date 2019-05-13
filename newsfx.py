@@ -13,7 +13,8 @@ atr_parser = {
         'title': ['h1', 'title_news_detail']
     },
     'tuoitre.vn': {
-        'title': ['h1', 'article-title']
+        'title': ['h1', 'article-title'],
+        'body': ['p','']
     },
     'thanhnien.vn': {
         'title': ['h1', 'details__headline']
@@ -35,10 +36,12 @@ class NewsFX:
         self.news_site = None
         self.title = ''
         self.html = ''
+        self.body = ''
 
     def parser(self):
         self._set_html()
         self._set_title(bs4(self.html, 'lxml'))
+        self._set_body(bs4(self.html,'lxml'))
 
     @property
     def get_html(self):
@@ -47,6 +50,11 @@ class NewsFX:
     @property
     def get_title(self):
         return self.title
+
+    @property
+    def get_content(self): 
+        return self.body
+
 
     def _set_html(self):
         url_news = self.url.split('/')[2]
@@ -59,6 +67,13 @@ class NewsFX:
 
         except Exception:
             raise Exception('Error request')
+
+    def _set_body(self, soup):
+        atr = get_atr_by_news(self.news_site)
+        body = soup.findAll(atr['body'][0],class_=atr['body'][1])
+        for contend in body[:-4] :
+            self.body += " "+contend.text
+        # self.body = body.text
 
     def _set_title(self, soup):
         atr = get_atr_by_news(self.news_site)

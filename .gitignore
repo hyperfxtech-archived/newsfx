@@ -107,3 +107,6 @@ venv.bak/
 
 # Visual Studio Code 
 .vscode
+
+#my test 
+.test.py
