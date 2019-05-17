@@ -10,14 +10,25 @@ news_supports = [
 
 atr_parser = {
     'vnexpress.net': {
-        'title': ['h1', 'title_news_detail']
+        'title': ['h1', 'title_news_detail'],
+        'public_date' :['span','time left'],
+        'summary' : ['p','description'],
+        'body': ['p','Normal'],
+        'author' :['strong','']
     },
     'tuoitre.vn': {
         'title': ['h1', 'article-title'],
-        'body': ['p','']
+        'public_date' :['div','date-time'],
+        'summary' : ['h2','sapo'],
+        'body': ['p',''],
+        'author' :['div','author']
     },
     'thanhnien.vn': {
-        'title': ['h1', 'details__headline']
+        'title': ['h1', 'details__headline'],
+        'public_date' :['time',''],
+        'summary' : ['div','sapo'],
+        'body': ['p',''],
+        'author' :['div','details__author__meta']
     },
     'www.tienphong.vn': {
         'title': ['h1', 'headline cms-title']
@@ -36,12 +47,18 @@ class NewsFX:
         self.news_site = None
         self.title = ''
         self.html = ''
+        self.public_date = ''
+        self.summary = ''
         self.body = ''
+        self.author = ''
 
     def parser(self):
         self._set_html()
         self._set_title(bs4(self.html, 'lxml'))
+        self._set_public_date(bs4(self.html, 'lxml'))
+        self._set_summary(bs4(self.html, 'lxml'))
         self._set_body(bs4(self.html,'lxml'))
+        self._set_author(bs4(self.html,'lxml'))
 
     @property
     def get_html(self):
@@ -52,8 +69,24 @@ class NewsFX:
         return self.title
 
     @property
+    def get_public_date(self):
+        return self.public_date
+
+    @property
+    def get_summary(self):
+        return self.summary
+
+    @property
     def get_content(self): 
         return self.body
+    
+    @property
+    def get_summary(self):
+        return self.summary
+
+    @property
+    def get_author(self):
+        return self.author
 
 
     def _set_html(self):
@@ -71,11 +104,27 @@ class NewsFX:
     def _set_body(self, soup):
         atr = get_atr_by_news(self.news_site)
         body = soup.findAll(atr['body'][0],class_=atr['body'][1])
-        for contend in body[:-4] :
-            self.body += " "+contend.text
-        # self.body = body.text
+        for contend in body[:] :
+            self.body += ""+contend.text
 
     def _set_title(self, soup):
         atr = get_atr_by_news(self.news_site)
-        title = soup.find(atr['title'][0], class_=atr['title'][1])
-        self.title = title.text
+        _title = soup.find(atr['title'][0], class_=atr['title'][1])
+        
+        self.title = _title.text
+
+    def _set_public_date(self,soup):
+        atr = get_atr_by_news(self.news_site)
+        public = soup.find(atr['public_date'][0], class_=atr['public_date'][1])
+        self.public_date = public.text
+    
+    def _set_summary(self,soup):
+        atr = get_atr_by_news(self.news_site)
+        summ = soup.find(atr['summary'][0], class_=atr['summary'][1])
+        self.summary = summ.text
+    
+    def _set_author(self,soup):
+        atr = get_atr_by_news(self.news_site)
+        author = soup.find(atr['author'][0], class_=atr['author'][1])
+
+        self.author = author.text.strip()

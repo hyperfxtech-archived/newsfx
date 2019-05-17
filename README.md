@@ -20,9 +20,9 @@ print(run.get_title) # Người dân ùn ùn trở lại Sài Gòn, Hà Nội sa
 
 | news site          | title | published_date | summary | content | author | top_image |
 |--------------------|:-----:|----------------|---------|---------|--------|-----------|
-| VnExpress          | ✔️   |                |         |         |        |           |
-| Tuổi Trẻ Online    | ✔️   |                |         |         |        |           |
-| Thanh Niên         | ✔️   |                |         |         |        |           |
+| VnExpress          | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
+| Tuổi Trẻ Online    | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
+| Thanh Niên         | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
 | Tiền Phong         |       |                |         |         |        |           |
 | Lao Động           |       |                |         |         |        |           |
 | Báo mới            |       |                |         |         |        |           |

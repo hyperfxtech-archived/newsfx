@@ -10,6 +10,13 @@ class TestSum(unittest.TestCase):
         self.assertEqual(
             run.get_title, "Chiến thắng Điện Biên Phủ và bài học 'Thế trận lòng dân'", 'Should title')
 
+    def test_tuoitre(self):
+        url = 'https://tuoitre.vn/tiem-thuoc-doc-vao-sung-de-cuu-te-giac-20190517075208132.html'
+        run = NewsFX(url)
+        run.parser()
+        self.assertEqual(run.get_title, "Tiêm thuốc độc vào sừng để cứu tê giác", 'Should title')
+
+
 
 if __name__ == '__main__':
     unittest.main()
