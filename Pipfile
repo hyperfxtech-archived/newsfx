@@ -11,6 +11,7 @@ requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
 pytest = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,5 +1,8 @@
 import requests
 from bs4 import BeautifulSoup as bs4
+from PIL import Image
+from io import BytesIO
+
 
 news_supports = [
     'vnexpress.net',
@@ -14,7 +17,8 @@ atr_parser = {
         'public_date' :['span','time left'],
         'summary' : ['p','description'],
         'body': ['p','Normal'],
-        'author' :['strong','']
+        'author' :['strong',''],
+        'top-image':['meta','og:image']
     },
     'tuoitre.vn': {
         'title': ['h1', 'article-title'],
@@ -51,6 +55,7 @@ class NewsFX:
         self.summary = ''
         self.body = ''
         self.author = ''
+        self.image = ''
 
     def parser(self):
         self._set_html()
@@ -59,6 +64,8 @@ class NewsFX:
         self._set_summary(bs4(self.html, 'lxml'))
         self._set_body(bs4(self.html,'lxml'))
         self._set_author(bs4(self.html,'lxml'))
+        self._set_top_image_link(bs4(self.html,'lxml'))
+
 
     @property
     def get_html(self):
@@ -88,6 +95,14 @@ class NewsFX:
     def get_author(self):
         return self.author
 
+    @property
+    def get_top_image_link(self):
+        return self.image
+
+    def save_top_image_link(self,name):
+        response = requests.get(self.image)
+        img = Image.open(BytesIO(response.content))
+        img.save(name)
 
     def _set_html(self):
         url_news = self.url.split('/')[2]
@@ -128,3 +143,8 @@ class NewsFX:
         author = soup.find(atr['author'][0], class_=atr['author'][1])
 
         self.author = author.text.strip()
+
+    def _set_top_image_link(self,soup):
+        atr = get_atr_by_news(self.news_site)
+        image = soup.find(atr['top-image'][0], property=atr['top-image'][1])
+        self.image = image['content']
