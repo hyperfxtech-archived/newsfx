@@ -25,17 +25,20 @@ atr_parser = {
         'public_date' :['div','date-time'],
         'summary' : ['h2','sapo'],
         'body': ['p',''],
-        'author' :['div','author']
+        'author' :['div','author'],
+        'top-image':['meta','og:image']
     },
     'thanhnien.vn': {
         'title': ['h1', 'details__headline'],
         'public_date' :['time',''],
         'summary' : ['div','sapo'],
         'body': ['p',''],
-        'author' :['div','details__author__meta']
+        'author' :['div','details__author__meta'],
+        'top-image':['meta','og:image']
     },
     'www.tienphong.vn': {
-        'title': ['h1', 'headline cms-title']
+        'title': ['h1', 'headline cms-title'],
+        'top-image':['meta','og:image']
     }
 
 }

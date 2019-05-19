@@ -16,13 +16,23 @@ run.parser()
 print(run.get_title) # Người dân ùn ùn trở lại Sài Gòn, Hà Nội sau kỳ nghỉ lễ
 ```
 
+### lấy hình 
+
+```python 
+#lấy link của hình 
+print(run.get_top_image_link) #https://link_dan_toi_file.jpg
+
+# save hình 
+run.save_top_image_link(name='ten_file_anh.jpg')
+```
+
 ## Trang tin hỗ trợ
 
 | news site          | title | published_date | summary | content | author | top_image |
 |--------------------|:-----:|----------------|---------|---------|--------|-----------|
-| VnExpress          | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
-| Tuổi Trẻ Online    | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
-| Thanh Niên         | ✔️   |✔️               |✔️        |✔️        |✔️       |           |
+| VnExpress          | ✔️   |✔️               |✔️        |✔️        |✔️       |  ✔️         |
+| Tuổi Trẻ Online    | ✔️   |✔️               |✔️        |✔️        |✔️       | ️️️️️️✔️         |
+| Thanh Niên         | ✔️   |✔️               |✔️        |✔️        |✔️       |  ✔️         |
 | Tiền Phong         |       |                |         |         |        |           |
 | Lao Động           |       |                |         |         |        |           |
 | Báo mới            |       |                |         |         |        |           |
