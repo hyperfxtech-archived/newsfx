@@ -53,12 +53,12 @@ run.save_top_image_link(name='ten_file_anh.jpg')
 
 |     Tên    	| Kiểu trả về 	|                 Mô tả                 	| Hỗ trợ 	|
 |------------	|-------------	|---------------------------------------	|:------:	|
-| title      	|    string   	| Tiêu đề bài viết                      	|        	|
-| html       	|    string   	| Code html bài viết                    	|        	|
-| text       	|    string   	| Nội dung bài viết chưa được xử lý     	|        	|
+| title      	|    string   	| Tiêu đề bài viết                      	|  ✔️     	|
+| html       	|    string   	| Code html bài viết                    	|   ✔️    	|
+| text       	|    string   	| Nội dung bài viết chưa được xử lý     	|  ✔️     	|
 | clean_text 	|    string   	| Nội dung bài viết đã được xử lý       	|        	|
-| author     	|     list    	| Tác giả bài viết                      	|        	|
-| published  	|     date    	| Ngày đăng bài viết                    	|        	|
-| top_image  	|    string   	| Hình ảnh đặc trưng của bài viết       	|        	|
-| images     	|     list    	| Danh sách hình ảnh có trong bài viết  	|        	|
+| author     	|     list    	| Tác giả bài viết                      	|   ✔️    	|
+| published  	|     date    	| Ngày đăng bài viết                    	|    ✔️   	|
+| top_image  	|    string   	| Hình ảnh đặc trưng của bài viết       	|  ✔️     	|
+| images     	|     list    	| Danh sách hình ảnh có trong bài viết  	|   ✔️    	|
 | keywords   	|     list    	| Từ khóa bài viết (có sẵn từ bài viết) 	|        	|

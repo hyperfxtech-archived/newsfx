@@ -62,12 +62,13 @@ class NewsFX:
 
     def parser(self):
         self._set_html()
-        self._set_title(bs4(self.html, 'lxml'))
-        self._set_public_date(bs4(self.html, 'lxml'))
-        self._set_summary(bs4(self.html, 'lxml'))
-        self._set_body(bs4(self.html,'lxml'))
-        self._set_author(bs4(self.html,'lxml'))
-        self._set_top_image_link(bs4(self.html,'lxml'))
+        self.soup = bs4(self.html, 'lxml')
+        self._set_title(self.soup)
+        self._set_public_date(self.soup)
+        self._set_summary(self.soup)
+        self._set_body(self.soup)
+        self._set_author(self.soup)
+        self._set_top_image_link(self.soup)
 
 
     @property
