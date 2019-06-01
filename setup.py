@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='newsfx',
-    version='0.0.7',
+    version='0.0.9',
     author="HyperFX Tech Team",
     author_email="coffee@hyperfx.tech",
     description="Scraper news article in Viet Nam",

@@ -1,5 +1,5 @@
 # newsfx
-> Dự án đang trong quá trình thực hiện
+> Bản beta hổ trợ cho 3 tờ báo lớn vnexpress.net, tuoitre.vn, thanhnien.vn và sẽ có cập nhập cho các trang như dự kiến bên dưới.
 
 ## Bắt đầu nhanh
 ### Cài đặt
@@ -56,7 +56,7 @@ run.save_top_image_link(name='ten_file_anh.jpg')
 | title      	|    string   	| Tiêu đề bài viết                      	|  ✔️     	|
 | html       	|    string   	| Code html bài viết                    	|   ✔️    	|
 | text       	|    string   	| Nội dung bài viết chưa được xử lý     	|  ✔️     	|
-| clean_text 	|    string   	| Nội dung bài viết đã được xử lý       	|        	|
+| clean_text 	|    string   	| Nội dung bài viết đã được xử lý       	|   ✔️    	|
 | author     	|     list    	| Tác giả bài viết                      	|   ✔️    	|
 | published  	|     date    	| Ngày đăng bài viết                    	|    ✔️   	|
 | top_image  	|    string   	| Hình ảnh đặc trưng của bài viết       	|  ✔️     	|

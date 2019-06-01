@@ -19,7 +19,8 @@ atr_parser = {
         'summary' : ['p','description'],
         'body': ['p','Normal'],
         'author' :['strong',''],
-        'top-image':['meta','og:image']
+        'top-image':['meta','og:image'],
+        'list-images':['img','']
     },
     'tuoitre.vn': {
         'title': ['h1', 'article-title'],
@@ -27,7 +28,8 @@ atr_parser = {
         'summary' : ['h2','sapo'],
         'body': ['p',''],
         'author' :['div','author'],
-        'top-image':['meta','og:image']
+        'top-image':['meta','og:image'],
+        'list-images':['img','']
     },
     'thanhnien.vn': {
         'title': ['h1', 'details__headline'],
@@ -35,7 +37,8 @@ atr_parser = {
         'summary' : ['div','sapo'],
         'body': ['div','cms-body'],
         'author' :['div','details__author__meta'],
-        'top-image':['meta','og:image']
+        'top-image':['meta','og:image'],
+        'list-images':['img','']
     },
     'www.tienphong.vn': {
         'title': ['h1', 'headline cms-title'],
@@ -64,6 +67,7 @@ class NewsFX:
         self.body = ''
         self.author = ''
         self.image = ''
+        self.list_images = list()
 
     def parser(self):
         self._set_html()
@@ -74,6 +78,7 @@ class NewsFX:
         self._set_body(self.soup)
         self._set_author(self.soup)
         self._set_top_image_link(self.soup)
+        self._set_list_image_link(self.soup)
 
 
     @property
@@ -82,7 +87,6 @@ class NewsFX:
 
     @property
     def get_title(self):
-        
         return re.sub(r"\W"," ",self.title, flags = re.I)  
 
     @property
@@ -104,6 +108,10 @@ class NewsFX:
     @property
     def get_top_image_link(self):
         return self.image
+
+    @property
+    def get_list_image(self):
+        return self.list_images
 
     def save_top_image_link(self,name):
         response = requests.get(self.image)
@@ -155,3 +163,11 @@ class NewsFX:
         atr = get_atr_by_news(self.news_site)
         image = soup.find(atr['top-image'][0], property=atr['top-image'][1])
         self.image = image['content']
+    
+    def _set_list_image_link(self,soup):
+        atr = get_atr_by_news(self.news_site)
+        images = soup.findAll(atr['list-images'][0], class_=atr['list-images'][1])
+        print(images)
+        for img in images:
+            self.list_images.append(img['src'])
+
