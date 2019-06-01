@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs4
 from PIL import Image
 from io import BytesIO
+import re
 
 
 news_supports = [
@@ -32,7 +33,7 @@ atr_parser = {
         'title': ['h1', 'details__headline'],
         'public_date' :['time',''],
         'summary' : ['div','sapo'],
-        'body': ['p',''],
+        'body': ['div','cms-body'],
         'author' :['div','details__author__meta'],
         'top-image':['meta','og:image']
     },
@@ -43,10 +44,14 @@ atr_parser = {
 
 }
 
+Special_characters = [
+        ',','.','/','<','>','?',';',':','\'','"','[','{',']','}'
+        ,'`','~','!','@','#','$','%','^','&','*','(',')','-',
+        '_','+','=','\n'
+]
 
 def get_atr_by_news(news_site):
     return atr_parser[news_site]
-
 
 class NewsFX:
     def __init__(self, url=None):
@@ -77,7 +82,8 @@ class NewsFX:
 
     @property
     def get_title(self):
-        return self.title
+        
+        return re.sub(r"\W"," ",self.title, flags = re.I)  
 
     @property
     def get_public_date(self):
@@ -85,15 +91,11 @@ class NewsFX:
 
     @property
     def get_summary(self):
-        return self.summary
+        return re.sub(r"\W"," ",self.summary, flags = re.I)  
 
     @property
-    def get_content(self): 
-        return self.body
-    
-    @property
-    def get_summary(self):
-        return self.summary
+    def get_content(self):
+        return re.sub(r"\W"," ",self.body, flags = re.I)  
 
     @property
     def get_author(self):
@@ -123,8 +125,10 @@ class NewsFX:
     def _set_body(self, soup):
         atr = get_atr_by_news(self.news_site)
         body = soup.findAll(atr['body'][0],class_=atr['body'][1])
-        for contend in body[:] :
-            self.body += ""+contend.text
+        contents = ''
+        for content in body :
+            contents = contents + content.text
+        self.body = contents 
 
     def _set_title(self, soup):
         atr = get_atr_by_news(self.news_site)
@@ -145,7 +149,6 @@ class NewsFX:
     def _set_author(self,soup):
         atr = get_atr_by_news(self.news_site)
         author = soup.find(atr['author'][0], class_=atr['author'][1])
-
         self.author = author.text.strip()
 
     def _set_top_image_link(self,soup):
