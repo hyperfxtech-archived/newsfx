@@ -78,7 +78,7 @@ class NewsFX:
         self._set_body(self.soup)
         self._set_author(self.soup)
         self._set_top_image_link(self.soup)
-        self._set_list_image_link(self.soup)
+        # self._set_list_image_link(self.soup)
 
 
     @property

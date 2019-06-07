@@ -10,8 +10,8 @@ pip install newsfx
 
 ### Thực hiện
 ```python
-from newsfx import NewsFX
-run = NewsFX('https://vnexpress.net/thoi-su/nguoi-dan-un-un-tro-lai-sai-gon-ha-noi-sau-ky-nghi-le-3917122.html')
+from newsfx import newsfx
+run = newsfx('https://vnexpress.net/thoi-su/nguoi-dan-un-un-tro-lai-sai-gon-ha-noi-sau-ky-nghi-le-3917122.html')
 run.parser()
 print(run.get_title) # Người dân ùn ùn trở lại Sài Gòn, Hà Nội sau kỳ nghỉ lễ
 ```
@@ -60,5 +60,5 @@ run.save_top_image_link(name='ten_file_anh.jpg')
 | author     	|     list    	| Tác giả bài viết                      	|   ✔️    	|
 | published  	|     date    	| Ngày đăng bài viết                    	|    ✔️   	|
 | top_image  	|    string   	| Hình ảnh đặc trưng của bài viết       	|  ✔️     	|
-| images     	|     list    	| Danh sách hình ảnh có trong bài viết  	|   ✔️    	|
+| images     	|     list    	| Danh sách hình ảnh có trong bài viết  	|        	|
 | keywords   	|     list    	| Từ khóa bài viết (có sẵn từ bài viết) 	|        	|

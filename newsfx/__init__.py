@@ -1,0 +1,1 @@
+from .newsfx import NewsFX
